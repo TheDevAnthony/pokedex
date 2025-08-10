@@ -90,9 +90,7 @@ const PokemonDetail = () => {
                         <p className="label">Height </p>
                         <p className="text-end">
                             {pokemon.height
-                                ? `${pokemon.height} dm (${
-                                      pokemon.height * 10
-                                  } cm)`
+                                ? `${pokemon.height * 10} cm`
                                 : "N/A"}
                         </p>
                     </div>
@@ -100,9 +98,7 @@ const PokemonDetail = () => {
                         <p className="label">Weight </p>
                         <p className="text-end">
                             {pokemon.weight
-                                ? `${pokemon.weight} hg (${
-                                      pokemon.weight / 10
-                                  } kg)`
+                                ? `${pokemon.weight / 10} kg`
                                 : "N/A"}
                         </p>
                     </div>
@@ -117,10 +113,10 @@ const PokemonDetail = () => {
                             key={index}
                             className="flex justify-between sm:justify-normal items-center w-full gap-2"
                         >
-                            <p className="label w-56">
+                            <p className="label w-48">
                                 {capWords(stat.stat.name)}
                             </p>
-                            <div className="flex gap-3 items-center w-full">
+                            <div className="flex gap-3 items-center">
                                 <p className="w-8">{stat.base_stat}</p>
                                 <div className="w-[180px] bg-gray-200 h-2 rounded-full">
                                     <div

@@ -23,11 +23,9 @@ const Homepage = () => {
     const [numPages, setNumPages] = useState<number>(1);
     const [currentPage, setCurrentPage] = useState<number>(1);
 
-    const FIXED_LIMIT = 10;
-
     const normalizeUrlWithLimit = (url: string): string => {
         const parsedUrl = new URL(url);
-        parsedUrl.searchParams.set("limit", String(FIXED_LIMIT));
+        parsedUrl.searchParams.set("limit", String(12));
         return parsedUrl.toString();
     };
 
@@ -37,7 +35,7 @@ const Homepage = () => {
 
         const endpoint = url
             ? normalizeUrlWithLimit(url)
-            : `${API_BASE_URL}?limit=10&offset=0`;
+            : `${API_BASE_URL}?limit=12&offset=0`;
 
         try {
             const res = await fetch(endpoint, API_OPTIONS);
@@ -47,7 +45,7 @@ const Homepage = () => {
 
             setNextUrl(data.next);
             setPrevUrl(data.previous);
-            setNumPages(Math.ceil(data.count / 10));
+            setNumPages(Math.ceil(data.count / 12));
 
             const detailedData = await Promise.all(
                 data.results.map(async (p: any) => {
@@ -119,18 +117,21 @@ const Homepage = () => {
 
     return (
         <>
-            <img
-                src={PokeballSvg}
-                className="fixed w-96 -z-10 -right-20 -top-20"
-            />
             <div
-                className="flex flex-wrap gap-3 my-8 w-full max-w-[420px] md:max-w-[655px] lg:max-w-[675px] 
+                className="flex flex-col md:flex-row justify-between gap-12 max-w-[420px] md:max-w-[655px] lg:max-w-[1015px] 
+                            mx-auto my-12 px-4 md:px-1"
+            >
+                <h1 className="font-bold text-3xl">Pokedex</h1>
+                <img
+                    src={PokeballSvg}
+                    className="fixed w-96 -z-10 -right-20 -top-20"
+                />
+                <SearchBar setSearchTerm={setSearchTerm} />
+            </div>
+            <div
+                className="flex flex-wrap gap-3 my-8 w-full max-w-[420px] md:max-w-[655px] lg:max-w-[1015px] 
                             sm:justify-center mx-auto mt-6 px-3 sm:px-0"
             >
-                <h1 className="font-bold text-3xl mb-12 mx-auto w-full">
-                    Pokedex
-                </h1>
-                <SearchBar setSearchTerm={setSearchTerm} />
                 {isLoading ? (
                     <div className="spinner mx-auto"></div>
                 ) : errorMessage ? (

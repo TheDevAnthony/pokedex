@@ -142,11 +142,11 @@
     }
 
     .info-container {
-        @apply flex justify-between sm:justify-normal gap-10;
+        @apply flex justify-between sm:justify-normal gap-2;
     }
 
     .label {
-        @apply text-gray-500 w-32;
+        @apply text-gray-500 w-48;
     }
 
     @keyframes spinner-c7wet2 {

@@ -10,8 +10,8 @@ const SearchBar = ({ setSearchTerm }: Props) => {
 
     return (
         <div
-            className="flex bg-white border border-gray-800 rounded-full w-full mx-auto 
-                        gap-2 px-6 py-3 mb-6"
+            className="flex bg-white border border-gray-800 rounded-full 
+                        w-full max-w-[650px] gap-2 px-6 py-3"
         >
             <img src={SearchIcon} alt="Search Icon" />
             <input
