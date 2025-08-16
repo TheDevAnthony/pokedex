@@ -71,7 +71,7 @@ const Homepage = () => {
 
         try {
             const endpoint = `${API_BASE_URL}/${encodeURIComponent(
-                query.toLowerCase().trim()
+                query.toLowerCase().trim().replace(" ", "-")
             )}`;
 
             const res = await fetch(endpoint, API_OPTIONS);
